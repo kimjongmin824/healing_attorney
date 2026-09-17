@@ -182,17 +182,10 @@
     letter-spacing: 0.02em;
   }
   .hero h1 {
-    font-size: clamp(3.4rem, 8vw, 5.6rem);
+    font-size: clamp(3rem, 7vw, 4.9rem);
     font-weight: 700;
     line-height: 1.1;
     color: #E7B84B;
-  }
-  .hero-rule {
-    width: 64px;
-    height: 2px;
-    background: var(--gold);
-    border: none;
-    margin: 6px 0;
   }
   .hero-tagline {
     font-family: 'Noto Serif KR', serif;
@@ -223,12 +216,20 @@
     margin-top: 6px;
   }
   .hero-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 0.88rem;
     color: var(--on-navy-muted);
     text-decoration: none;
     border-bottom: 1px solid rgba(237,233,220,0.3);
     padding-bottom: 2px;
     transition: color .15s ease, border-color .15s ease;
+  }
+  .hero-link-icon {
+    width: auto;
+    height: 18px;
+    display: inline-block;
   }
   .hero-links a:hover {
     color: var(--gold-bright);
@@ -317,6 +318,90 @@
     .practice-grid { grid-template-columns: 1fr; }
   }
 
+  /* ---------- Success cases ---------- */
+  .cases { background: var(--bg); border-top: 1px solid var(--line); }
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 900px) {
+    .cases-grid { grid-template-columns: 1fr; }
+  }
+  .case-item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    padding: 28px 24px;
+  }
+  .case-tag {
+    font-size: 0.78rem;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  }
+  .case-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .case-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ---------- Consult board ---------- */
+  .consult { background: var(--bg); border-top: 1px solid var(--line); }
+  .consult-form {
+    grid-column: 2;
+    max-width: 560px;
+    display: grid;
+    gap: 22px;
+  }
+  @media (max-width: 680px) { .consult-form { grid-column: 1; } }
+  .consult-row { display: grid; gap: 8px; }
+  .consult-row label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .consult-row input,
+  .consult-row textarea {
+    width: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.98rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    padding: 12px 14px;
+    resize: vertical;
+  }
+  .consult-row input:focus,
+  .consult-row textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+  .consult-submit {
+    justify-self: start;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--bg);
+    background: var(--navy);
+    border: none;
+    padding: 13px 32px;
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  .consult-submit:hover { background: var(--gold); color: #1a1a1a; }
+  .consult-note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
   /* ---------- Career ---------- */
   .career {
     background: linear-gradient(175deg, var(--navy) 0%, var(--navy-deep) 100%);
@@ -377,68 +462,68 @@
     padding-top: 2px;
   }
 
-  /* ---------- Contact / footer ---------- */
+  /* ---------- Contact / footer (오시는 길) ---------- */
   .contact {
-    background: var(--navy-deep);
-    color: var(--on-navy);
+    background: var(--bg);
+    color: var(--text);
     padding: 88px 0 48px;
+    border-top: 1px solid var(--line);
   }
   .contact .wrap { display: grid; gap: 40px; }
   .contact-title {
     font-size: 1.7rem;
     font-weight: 600;
     max-width: 16ch;
+    color: var(--text);
   }
-  .phone-callout {
-    display: flex;
-    align-items: baseline;
-    gap: 18px;
-    flex-wrap: wrap;
-    padding: 22px 0;
-    border-top: 1px solid rgba(237,233,220,0.16);
-    border-bottom: 1px solid rgba(237,233,220,0.16);
+  .contact-panel {
+    max-width: 480px;
   }
-  .phone-callout-label {
-    font-size: 0.85rem;
-    color: var(--on-navy-muted);
-  }
-  .phone-callout-number {
-    font-family: 'Noto Serif KR', serif;
-    font-size: clamp(1.6rem, 3vw, 2.1rem);
-    font-weight: 700;
-    color: var(--gold-bright);
-    text-decoration: none;
-  }
-  .phone-callout-number:hover { color: var(--on-navy); }
-  .contact-grid {
+  .contact-info {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    padding-top: 32px;
+    gap: 30px;
   }
-  @media (max-width: 720px) {
-    .contact-grid { grid-template-columns: 1fr; }
+  .info-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
   }
-  .contact-label {
-    font-size: 0.78rem;
-    color: var(--on-navy-muted);
-    margin-bottom: 8px;
+  .info-icon {
+    flex: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--gold-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
   }
-  .contact-value {
-    font-size: 1.02rem;
+  .info-label {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
   }
-  .contact-value a { text-decoration: none; border-bottom: 1px solid rgba(237,233,220,0.35); }
-  .contact-value a:hover { border-color: var(--gold-bright); color: var(--gold-bright); }
+  .info-value {
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .info-value a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+  .info-value a:hover { color: var(--gold); border-color: var(--gold); }
   .firm-line {
-    margin-top: 56px;
+    margin-top: 16px;
     padding-top: 24px;
-    border-top: 1px solid rgba(237,233,220,0.16);
+    border-top: 1px solid var(--line);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 12px;
     font-size: 0.82rem;
-    color: var(--on-navy-muted);
+    color: var(--text-muted);
   }
 </style>
 </head>
@@ -452,10 +537,12 @@
     </a>
     <nav aria-label="주요 메뉴">
       <ul>
-        <li><a href="#intro">소개</a></li>
+        <li><a href="#greeting">소개</a></li>
+        <li><a href="#profile">프로필</a></li>
         <li><a href="#practice">업무분야</a></li>
-        <li><a href="#career">경력</a></li>
-        <li><a href="#contact">연락처</a></li>
+        <li><a href="#cases">승소사례</a></li>
+        <li><a href="#consult">상담문의</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -466,19 +553,18 @@
   <section class="hero">
     <div class="wrap">
       <div class="hero-text">
-        <p class="hero-eyebrow">변호사 · 법무법인(유한) 해송</p>
+        <p class="hero-eyebrow">힐링변호사</p>
         <ul class="hero-stats">
           <li>17년 법관 경력</li>
           <li>부장판사 출신</li>
           <li>민사 · 형사 · 가사 · 행정 전문</li>
         </ul>
         <h1>김종민 변호사</h1>
-        <hr class="hero-rule">
         <p class="hero-tagline">상담부터 서면 작성, 법정 변론까지 직접 수행합니다.</p>
         <div class="hero-links">
-          <a href="https://blog.naver.com/ramblas" target="_blank" rel="noopener noreferrer">네이버 블로그 ↗</a>
-          <a href="https://www.youtube.com/channel/UCT5CfX1-n9SI9k84jQ4wCGg" target="_blank" rel="noopener noreferrer">힐링변호사 유튜브 ↗</a>
-          <a href="https://www.lawhaesong.co.kr/" target="_blank" rel="noopener noreferrer">법무법인(유한) 해송 ↗</a>
+          <a href="https://blog.naver.com/ramblas" target="_blank" rel="noopener noreferrer"><img src="data:image/png;base64,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" alt="" class="hero-link-icon">네이버 블로그</a>
+          <a href="https://www.youtube.com/channel/UCT5CfX1-n9SI9k84jQ4wCGg" target="_blank" rel="noopener noreferrer"><img src="data:image/png;base64,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" alt="" class="hero-link-icon">힐링변호사 유튜브</a>
+          <a href="https://www.lawhaesong.co.kr/" target="_blank" rel="noopener noreferrer"><img src="data:image/png;base64,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" alt="" class="hero-link-icon">법무법인(유한) 해송</a>
         </div>
       </div>
       <figure class="hero-photo">
@@ -487,11 +573,11 @@
     </div>
   </section>
 
-  <section id="intro" class="intro">
+  <section id="greeting" class="intro">
     <div class="wrap">
       <div class="section-head">
         <p class="section-label">소개</p>
-        <h2 class="section-title">법관의 경험을 의뢰인의 편에서</h2>
+        <h2 class="section-title">항상 의뢰인의 편에서 생각하는 변호사</h2>
       </div>
       <div class="intro-body">
         <p>
@@ -511,6 +597,47 @@
           오랜 법관 경력에서 쌓은 재판 실무 감각을 바탕으로, 현재 법무법인(유한) 해송에서
           민사·형사·가사·행정 전 분야에 걸쳐 의뢰인을 대리하고 있습니다.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="profile" class="career">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">프로필</p>
+        <h2 class="section-title">경력 및 학력</h2>
+      </div>
+      <div class="career-groups">
+        <div>
+          <p class="career-group-title">법원 · 헌법재판소</p>
+          <ul class="career-list">
+            <li>서울중앙지방법원 부장판사</li>
+            <li>인천지방법원 부장판사</li>
+            <li>부산가정법원 부장판사</li>
+            <li>서울동부지방법원 판사</li>
+            <li>서울행정법원 판사</li>
+            <li>인천지방법원 부천지원 판사</li>
+            <li>광주지방법원 판사</li>
+            <li>헌법재판소 헌법연구관</li>
+          </ul>
+        </div>
+        <div>
+          <p class="career-group-title">그 외 경력</p>
+          <ul class="career-list">
+            <li>대한상사중재원 중재인</li>
+            <li>인천 서구 선거관리위원장</li>
+            <li>미국 U.C. 버클리 대학교 장기연수</li>
+          </ul>
+        </div>
+        <div>
+          <p class="career-group-title">학력</p>
+          <ul class="career-list">
+            <li>서울대학교 법과대학원 (행정법 석사)</li>
+            <li>서울대학교 법과대학 공법학과 졸업</li>
+            <li>대전 대덕고등학교 졸업</li>
+            <li>제41회 사법시험 합격 · 사법연수원 31기 수료</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -546,50 +673,54 @@
     </div>
   </section>
 
-  <section id="career" class="career">
+  <section id="cases" class="cases">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">경력</p>
-        <h2 class="section-title">주요 경력</h2>
+        <p class="section-label">승소사례</p>
+        <h2 class="section-title">주요 승소사례</h2>
       </div>
-      <div class="career-groups">
-        <div>
-          <p class="career-group-title">법원 · 헌법재판소</p>
-          <ul class="career-list">
-            <li>서울중앙지방법원 부장판사</li>
-            <li>인천지방법원 부장판사</li>
-            <li>부산가정법원 부장판사</li>
-            <li>서울동부지방법원 판사</li>
-            <li>서울행정법원 판사</li>
-            <li>인천지방법원 부천지원 판사</li>
-            <li>광주지방법원 판사</li>
-            <li>헌법재판소 헌법연구관</li>
-          </ul>
+      <div class="cases-grid">
+        <div class="case-item">
+          <p class="case-tag">민사</p>
+          <h3 class="case-title">사건명을 입력해 주세요</h3>
+          <p class="case-desc">사건의 개요와 결과를 간략히 소개하는 내용을 여기에 넣어주세요.</p>
         </div>
-        <div>
-          <p class="career-group-title">그 외 경력</p>
-          <ul class="career-list">
-            <li>대한상사중재원 중재인</li>
-            <li>인천 서구 선거관리위원장</li>
-            <li>미국 U.C. 버클리 대학교 장기연수</li>
-          </ul>
+        <div class="case-item">
+          <p class="case-tag">형사</p>
+          <h3 class="case-title">사건명을 입력해 주세요</h3>
+          <p class="case-desc">사건의 개요와 결과를 간략히 소개하는 내용을 여기에 넣어주세요.</p>
+        </div>
+        <div class="case-item">
+          <p class="case-tag">가사 · 행정</p>
+          <h3 class="case-title">사건명을 입력해 주세요</h3>
+          <p class="case-desc">사건의 개요와 결과를 간략히 소개하는 내용을 여기에 넣어주세요.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="education" class="education">
+  <section id="consult" class="consult">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">학력</p>
-        <h2 class="section-title">학력 및 자격</h2>
+        <p class="section-label">상담문의</p>
+        <h2 class="section-title">상담문의</h2>
       </div>
-      <ul class="edu-list">
-        <li><span>서울대학교 법과대학원 (행정법 석사)</span><span class="edu-year">대학원</span></li>
-        <li><span>서울대학교 법과대학 공법학과 졸업</span><span class="edu-year">학사</span></li>
-        <li><span>대전 대덕고등학교 졸업</span><span class="edu-year">고등학교</span></li>
-        <li><span>제41회 사법시험 합격 · 사법연수원 31기 수료</span><span class="edu-year">자격</span></li>
-      </ul>
+      <form class="consult-form" id="consultForm">
+        <div class="consult-row">
+          <label for="c-name">성함</label>
+          <input id="c-name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div class="consult-row">
+          <label for="c-phone">연락처</label>
+          <input id="c-phone" name="phone" type="tel" required autocomplete="tel" placeholder="010-0000-0000">
+        </div>
+        <div class="consult-row">
+          <label for="c-message">상담 내용</label>
+          <textarea id="c-message" name="message" rows="6" required placeholder="사건의 개요와 궁금하신 점을 남겨주시면 검토 후 연락드립니다."></textarea>
+        </div>
+        <button type="submit" class="consult-submit">상담 신청하기</button>
+        <p class="consult-note" id="consultNote">신청하기를 누르면 이메일 작성 화면이 열리며, kimjongmin824@gmail.com으로 접수됩니다.</p>
+      </form>
     </div>
   </section>
 
@@ -597,23 +728,30 @@
 
 <footer id="contact" class="contact">
   <div class="wrap">
-    <h2 class="contact-title">상담 및 문의</h2>
-    <div class="phone-callout">
-      <p class="phone-callout-label">전화 상담</p>
-      <a class="phone-callout-number" href="tel:0234897142">02) 3489-7142</a>
-    </div>
-    <div class="contact-grid">
-      <div>
-        <p class="contact-label">이메일</p>
-        <p class="contact-value"><a href="mailto:kimjongmin824@gmail.com">kimjongmin824@gmail.com</a></p>
-      </div>
-      <div>
-        <p class="contact-label">전화</p>
-        <p class="contact-value"><a href="tel:0234897142">02) 3489-7142</a></p>
-      </div>
-      <div>
-        <p class="contact-label">주소</p>
-        <p class="contact-value">서울 서초구 서초대로 301, 9층<br>(서초동, 동익성봉빌딩)</p>
+    <h2 class="contact-title">Contact</h2>
+    <div class="contact-panel">
+      <div class="contact-info">
+        <div class="info-row">
+          <span class="info-icon">📞</span>
+          <div>
+            <p class="info-label">전화 상담</p>
+            <p class="info-value"><a href="tel:0234897142">TEL: 02) 3489-7142</a></p>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">✉️</span>
+          <div>
+            <p class="info-label">이메일</p>
+            <p class="info-value"><a href="mailto:kimjongmin824@gmail.com">kimjongmin824@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">📍</span>
+          <div>
+            <p class="info-label">주소</p>
+            <p class="info-value">서울 서초구 서초대로 301, 9층<br>(서초동, 동익성봉빌딩)</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="firm-line">
@@ -623,5 +761,22 @@
   </div>
 </footer>
 
+<script>
+  (function () {
+    const form = document.getElementById('consultForm');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = form.name.value.trim();
+      const phone = form.phone.value.trim();
+      const message = form.message.value.trim();
+      const subject = encodeURIComponent('[온라인 상담 신청] ' + name);
+      const body = encodeURIComponent(
+        '성함: ' + name + '\n연락처: ' + phone + '\n\n상담 내용:\n' + message
+      );
+      window.location.href = 'mailto:kimjongmin824@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  })();
+</script>
 </body>
 </html>
