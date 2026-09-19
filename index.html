@@ -175,6 +175,7 @@
     object-fit: cover;
     object-position: 50% 20%;
     opacity: 0;
+    filter: brightness(1.6) contrast(1.08) saturate(1.05);
     transition: opacity 1s ease;
   }
   .hero-photo-img.active { opacity: 1; }
@@ -578,6 +579,15 @@
     gap: 44px;
   }
   @media (max-width: 680px) { .career-groups { grid-column: 1; } }
+  .career-list li {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .career-list li.reveal {
+    opacity: 1;
+    transform: translateY(0);
+  }
   .career-group-title {
     font-size: 0.82rem;
     color: var(--gold-bright);
@@ -815,13 +825,13 @@
             <li>용인시 고문변호사</li>
             <li>대한민국해병대 인권자문위원</li>
             <li>인천 서구 선거관리위원장</li>
-            <li>미국 U.C. 버클리 대학교 장기연수</li>
           </ul>
         </div>
         <div>
           <p class="career-group-title">학력</p>
           <ul class="career-list">
             <li>서울대학교 법과대학원 (행정법 석사)</li>
+            <li>미국 U.C. 버클리 대학교 장기연수</li>
             <li>서울대학교 법과대학 공법학과 졸업</li>
             <li>대전 대덕고등학교 졸업</li>
             <li>제41회 사법시험 합격 · 사법연수원 31기 수료</li>
@@ -1020,6 +1030,38 @@
     </div>
   </div>
 </footer>
+
+<script>
+  (function () {
+    const section = document.getElementById('profile');
+    if (!section) return;
+    const lists = Array.from(section.querySelectorAll('.career-list'));
+    if (!lists.length) return;
+    const items = [];
+    lists.forEach(function (ul) {
+      Array.from(ul.children).forEach(function (li) { items.push(li); });
+    });
+    let started = false;
+    function revealItems() {
+      if (started) return;
+      started = true;
+      items.forEach(function (li, i) {
+        setTimeout(function () {
+          li.classList.add('reveal');
+        }, i * 3000);
+      });
+    }
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          revealItems();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    observer.observe(section);
+  })();
+</script>
 
 <script>
   (function () {
