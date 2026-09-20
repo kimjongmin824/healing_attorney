@@ -175,7 +175,7 @@
     object-fit: cover;
     object-position: 50% 20%;
     opacity: 0;
-    filter: brightness(1.6) contrast(1.08) saturate(1.05);
+    filter: brightness(1) contrast(1.2) saturate(1.05);
     transition: opacity 1s ease;
   }
   .hero-photo-img.active { opacity: 1; }
@@ -1048,7 +1048,7 @@
       items.forEach(function (li, i) {
         setTimeout(function () {
           li.classList.add('reveal');
-        }, i * 3000);
+        }, i * 2000);
       });
     }
     const observer = new IntersectionObserver(function (entries) {
